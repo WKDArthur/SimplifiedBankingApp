@@ -1,0 +1,72 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+html {
+    font-size: 50%;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", sans-serif;
+    color: #444;
+    background-color: #f3f3f3;
+    height: 100vh;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    font-size: large;
+}
+
+.mainInfo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2rem;
+    height: 10rem;
+    font-size: large;
+}
+
+.balance_value {
+    font-size: 7rem;
+}
+
+.accountInfo {
+    font-size: 3rem;
+}
+
+
+.board {
+    display: flex;
+    flex-direction: row;
+}
+
+.extract {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    padding: 3rem;
+
+}
+
+.movement {
+    padding: 1rem 2rem;
+    font-size: large;
+}
+
+.transfer {
+    flex: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    font-size: large;
+}
+
+.transfer_label {
+    font-size: large;
+}
