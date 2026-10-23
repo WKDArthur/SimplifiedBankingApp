@@ -38,14 +38,15 @@ const labelExpenditureValue = document.querySelector(".expenditure__value");
 
 const containerMovements = document.querySelector(".movements");
 const containerApp = document.querySelector(".app");
-const containerLogin = document.querySelector(".login")
+const containerLogin = document.querySelector(".login");
 
 const inputTransferValue = document.querySelector(".transfer__value");
 const inputTransferAccount = document.querySelector(".transfer__account");
-const inputLoginAccount = document.querySelector(".login__account")
+const inputLoginAccount = document.querySelector(".login__account");
 
-const btnTransfer = document.querySelector(".transfer__btn")
-const btnLogin = document.querySelector(".login__btn")
+const btnTransfer = document.querySelector(".transfer__btn");
+const btnLogin = document.querySelector(".login__btn");
+const btnLogout = document.querySelector(".logout")
 
 
 let loggedAccount;
@@ -80,16 +81,15 @@ function updateUI(account) {
         const html = `<div class="movement"> movements
           <div class="movement_value"> ${mov}</div>
         </div>`;
-        containerMovements.insertAdjacentHTML("afterbegin", html)
+        containerMovements.insertAdjacentHTML("afterbegin", html);
     });
 }
 
 function transferMoney() {
-    // must change account is transfered from to current accout, now its fixed to account 1
     const targetAccountNumber = Number(inputTransferAccount.value);
     console.log(typeof (targetAccountNumber));
 
-    if (targetAccountNumber == matchingAccount.accountNumber) {
+    if (targetAccountNumber == loggedAccount.accountNumber) {
         console.log("error1");
     }
     else {
@@ -122,8 +122,14 @@ function login() {
         updateUI(loggedAccount);
     }
     else console.log("error");
+}
 
+function logout() {
+    containerLogin.classList.remove('login--hidden');
+    containerApp.classList.remove('app--visible');
+    loggedAccount = 0;
 }
 
 btnLogin.addEventListener('click', login)
+btnLogout.addEventListener('click', logout)
 btnTransfer.addEventListener('click', transferMoney);
