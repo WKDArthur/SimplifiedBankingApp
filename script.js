@@ -39,7 +39,7 @@ const labelExpenditureValue = document.querySelector(".expenditure__value");
 const containerMovements = document.querySelector(".movements");
 const containerApp = document.querySelector(".app");
 const containerLogin = document.querySelector(".login");
-const containerCreateAccount = document.querySelector(".create__account")
+const containerCreateAccount = document.querySelector(".create__account");
 
 const inputTransferValue = document.querySelector(".transfer__value");
 const inputTransferAccount = document.querySelector(".transfer__account");
@@ -83,33 +83,30 @@ function updateUI(account) {
     labelExpenditureValue.textContent = calculateExpenditure(account.movements);
 
     account.movements.forEach(mov => {
-        const html = `<div class="movement"> movements
-          <div class="movement_value"> ${mov}</div>
+        const html = `<div class="movement"> 
+          <div class="movement__value"> ${mov}</div>
         </div>`;
         containerMovements.insertAdjacentHTML("afterbegin", html);
     });
 }
 
 function transferMoney() {
+    if (!loggedAccount) return;
+
+    const value = Number(inputTransferValue.value);
     const targetAccountNumber = Number(inputTransferAccount.value);
-    console.log(typeof (targetAccountNumber));
+    const receiver = accounts.find(acc => acc.accountNumber === targetAccountNumber);
 
-    if (targetAccountNumber == loggedAccount.accountNumber) {
-        console.log("error1");
-    }
-    else {
-        const matchingAccount = accounts.find(acc => acc.accountNumber === targetAccountNumber);
-        console.log(matchingAccount);
 
-        if (matchingAccount) {
-            const value = Number(inputTransferValue.value);
-            loggedAccount.movements.push(-value);
-            matchingAccount.movements.push(value);
-            console.log(matchingAccount.movements);
-        }
-        else console.log("error2");
+    if (receiver && receiver != loggedAccount &&
+        value > 0 && calculateBalance(loggedAccount.movements) >= value) {
+        loggedAccount.movements.push(-value);
+        matchingAccount.movements.push(value);
+        console.log(matchingAccount.movements);
     }
 
+    inputTransferAccount.value = '';
+    inputTransferValue.value = '';
     updateUI(loggedAccount);
 }
 
@@ -124,6 +121,7 @@ function login() {
         console.log(loggedAccount);
         containerLogin.classList.add('login--hidden');
         containerApp.classList.add('app--visible');
+        inputLoginAccount.value = '';
         updateUI(loggedAccount);
     }
     else console.log("error");
@@ -157,9 +155,16 @@ function createAccount() {
     accounts.push(newAccount);
 }
 
-btnLogin.addEventListener('click', login)
-btnLogout.addEventListener('click', logout)
+btnLogin.addEventListener('click', login);
+btnLogout.addEventListener('click', logout);
 btnCreateAccountUI.addEventListener('click', goTocreateAccountUI);
 btnTransfer.addEventListener('click', transferMoney);
 btnBackFromCreateAccount.addEventListener('click', returnFromCreateAccountUI);
 btnConfirmCreateAccount.addEventListener('click', createAccount);
+
+
+// to do
+// accounts , add password in the account, add fields for it on create account and on login.
+// check that transfers cant be made if the person dont have enough money
+// show account number when account is created
+// show error using UI instead of terminal
