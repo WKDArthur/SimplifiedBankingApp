@@ -33,13 +33,22 @@ const accounts = [account1, account2, account3, account4];
 const labelBalanceValue = document.querySelector(".balance__value");
 const labelAccountName = document.querySelector(".accountInfo__name");
 const labelAccountNumber = document.querySelector(".accountInfo__number")
-const containerMovements = document.querySelector(".movements");
 const labelIncomeValue = document.querySelector(".income__value");
 const labelExpenditureValue = document.querySelector(".expenditure__value");
+
+const containerMovements = document.querySelector(".movements");
+const containerApp = document.querySelector(".app");
+const containerLogin = document.querySelector(".login")
+
 const inputTransferValue = document.querySelector(".transfer__value");
 const inputTransferAccount = document.querySelector(".transfer__account");
-const btnTransfer = document.querySelector(".transfer__btn")
+const inputLoginAccount = document.querySelector(".login__account")
 
+const btnTransfer = document.querySelector(".transfer__btn")
+const btnLogin = document.querySelector(".login__btn")
+
+
+let loggedAccount;
 
 function calculateBalance(movements) {
     const sum = movements.reduce((acc, mov) => acc + mov, 0);
@@ -80,7 +89,7 @@ function transferMoney() {
     const targetAccountNumber = Number(inputTransferAccount.value);
     console.log(typeof (targetAccountNumber));
 
-    if (targetAccountNumber == account1.accountNumber) {
+    if (targetAccountNumber == matchingAccount.accountNumber) {
         console.log("error1");
     }
     else {
@@ -89,16 +98,32 @@ function transferMoney() {
 
         if (matchingAccount) {
             const value = Number(inputTransferValue.value);
-            account1.movements.push(-value);
+            loggedAccount.movements.push(-value);
             matchingAccount.movements.push(value);
             console.log(matchingAccount.movements);
         }
         else console.log("error2");
     }
 
-    updateUI(account1);
+    updateUI(loggedAccount);
 }
 
+function login() {
+    const targetAccountNumber = Number(inputLoginAccount.value);
+    console.log(typeof (targetAccountNumber));
 
+    const matchingAccount = accounts.find(acc => acc.accountNumber === targetAccountNumber);
+    console.log(matchingAccount);
+    if (matchingAccount) {
+        loggedAccount = matchingAccount;
+        console.log(loggedAccount);
+        containerLogin.classList.add('login--hidden');
+        containerApp.classList.add('app--visible');
+        updateUI(loggedAccount);
+    }
+    else console.log("error");
+
+}
+
+btnLogin.addEventListener('click', login)
 btnTransfer.addEventListener('click', transferMoney);
-updateUI(account1);

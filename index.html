@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Banking App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -13,44 +13,50 @@
     <h1> Banking App </h1>
   </header>
 
-  <div class="login">
-    <h2 class="login__title"> Enter Account </h2>
-    <label class="login__label"> account </label>
-    <input type="number" class="login__account">
-    <button class="login__btn"> confirm </button>
-  </div>
+  <div class="stage">
 
-  <main class="app">
-    <div class="mainInfo">
-      <div class="balance">
-        <p class="balance__label"> Balance </p>
-        <p class="balance__value"> 0000000 </p>
-      </div>
-      <div class="accountInfo">
-        <p class="accountInfo__name"> account name </p>
-        <p class="accountInfo__number"> account number </p>
-      </div>
-      <div class="income">
-        <p class="income__label"> Income </p>
-        <p class="income__value"> 0000 </p>
-      </div>
-      <div class="expenditure">
-        <p class="expenditure__label"> Expenditure </p>
-        <p class="expenditure__value"> 0000 </p>
+    <div class="login">
+      <div class="login__box">
+        <label class="login__label"> account </label>
+        <input type="number" class="login__account">
+        <button class="login__btn"> confirm </button>
       </div>
     </div>
-    <div class="board">
-      <div class="movements">
+
+    <main class="app">
+      <div class="mainInfo">
+        <div class="balance">
+          <p class="balance__label"> Balance </p>
+          <p class="balance__value"> 0000000 </p>
+        </div>
+        <div class="accountInfo">
+          <p class="accountInfo__name"> account name </p>
+          <p class="accountInfo__number"> account number </p>
+        </div>
+        <div class="income">
+          <p class="income__label"> Income </p>
+          <p class="income__value"> 0000 </p>
+        </div>
+        <div class="expenditure">
+          <p class="expenditure__label"> Expenditure </p>
+          <p class="expenditure__value"> 0000 </p>
+        </div>
       </div>
-      <div class="transfer"> Transfer money
-        <label class="transfer__label"> account </label>
-        <input type="number" class="transfer__account">
-        <label class="transfer_label"> value </label>
-        <input type="number" class="transfer__value">
-        <button class="transfer__btn"> confirm </button>
+
+      <div class="board">
+        <div class="movements">
+        </div>
+        <div class="transfer"> Transfer money
+          <label class="transfer__label"> account </label>
+          <input type="number" class="transfer__account">
+          <label class="transfer__label"> value </label>
+          <input type="number" class="transfer__value">
+          <button class="transfer__btn"> confirm </button>
+        </div>
       </div>
-    </div>
-  </main>
+    </main>
+
+  </div>
 
   <footer>
     <p> 2026 My Site. All rights reserved.</p>
