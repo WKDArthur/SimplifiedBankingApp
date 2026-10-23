@@ -31,27 +31,27 @@ const accounts = [account1, account2, account3, account4];
 // APP
 
 const labelBalanceValue = document.querySelector(".balance__value");
-const labelAccountName = document.querySelector(".accountInfo__name");
-const labelAccountNumber = document.querySelector(".accountInfo__number")
+const labelAccountName = document.querySelector(".account-info__name");
+const labelAccountNumber = document.querySelector(".account-info__number")
 const labelIncomeValue = document.querySelector(".income__value");
 const labelExpenditureValue = document.querySelector(".expenditure__value");
 
 const containerMovements = document.querySelector(".movements");
 const containerApp = document.querySelector(".app");
 const containerLogin = document.querySelector(".login");
-const containerCreateAccount = document.querySelector(".create__account");
+const containerCreateAccount = document.querySelector(".create-account");
 
 const inputTransferValue = document.querySelector(".transfer__value");
 const inputTransferAccount = document.querySelector(".transfer__account");
 const inputLoginAccount = document.querySelector(".login__account");
-const inputCreateAccountName = document.querySelector(".create__account__name");
+const inputCreateAccountName = document.querySelector(".create-account__name");
 
 const btnTransfer = document.querySelector(".transfer__btn");
 const btnLogin = document.querySelector(".login__btn");
 const btnLogout = document.querySelector(".logout__btn");
-const btnConfirmCreateAccount = document.querySelector(".create__account__confirm__btn");
-const btnCreateAccountUI = document.querySelector(".login__create_account__btn");
-const btnBackFromCreateAccount = document.querySelector(".create__account__back__btn");
+const btnConfirmCreateAccount = document.querySelector(".create-account__confirm-btn");
+const btnCreateAccountUI = document.querySelector(".login__create-btn");
+const btnBackFromCreateAccount = document.querySelector(".create-account__back-btn");
 
 
 let loggedAccount;
@@ -101,8 +101,7 @@ function transferMoney() {
     if (receiver && receiver != loggedAccount &&
         value > 0 && calculateBalance(loggedAccount.movements) >= value) {
         loggedAccount.movements.push(-value);
-        matchingAccount.movements.push(value);
-        console.log(matchingAccount.movements);
+        receiver.movements.push(value);
     }
 
     inputTransferAccount.value = '';
@@ -119,8 +118,8 @@ function login() {
     if (matchingAccount) {
         loggedAccount = matchingAccount;
         console.log(loggedAccount);
-        containerLogin.classList.add('login--hidden');
-        containerApp.classList.add('app--visible');
+        containerLogin.classList.add('overlay--hidden');
+        containerApp.classList.add('overlay--visible');
         inputLoginAccount.value = '';
         updateUI(loggedAccount);
     }
@@ -128,19 +127,19 @@ function login() {
 }
 
 function logout() {
-    containerLogin.classList.remove('login--hidden');
-    containerApp.classList.remove('app--visible');
-    loggedAccount = 0;
+    containerLogin.classList.remove('overlay--hidden');
+    containerApp.classList.remove('overlay--visible');
+    loggedAccount = undefined;
 }
 
-function goTocreateAccountUI() {
-    containerLogin.classList.add('login--hidden');
-    containerCreateAccount.classList.add('app--visible');
+function goToCreateAccountUI() {
+    containerLogin.classList.add('overlay--hidden');
+    containerCreateAccount.classList.add('overlay--visible');
 }
 
 function returnFromCreateAccountUI() {
-    containerLogin.classList.remove('login--hidden');
-    containerCreateAccount.classList.remove('app--visible');
+    containerLogin.classList.remove('overlay--hidden');
+    containerCreateAccount.classList.remove('overlay--visible');
 }
 
 function createAccount() {
@@ -149,15 +148,12 @@ function createAccount() {
         accountNumber: accounts.length + 1,
         movements: [],
     }
-
-    console.log(newAccount);
-
     accounts.push(newAccount);
 }
 
 btnLogin.addEventListener('click', login);
 btnLogout.addEventListener('click', logout);
-btnCreateAccountUI.addEventListener('click', goTocreateAccountUI);
+btnCreateAccountUI.addEventListener('click', goToCreateAccountUI);
 btnTransfer.addEventListener('click', transferMoney);
 btnBackFromCreateAccount.addEventListener('click', returnFromCreateAccountUI);
 btnConfirmCreateAccount.addEventListener('click', createAccount);
@@ -165,6 +161,5 @@ btnConfirmCreateAccount.addEventListener('click', createAccount);
 
 // to do
 // accounts , add password in the account, add fields for it on create account and on login.
-// check that transfers cant be made if the person dont have enough money
 // show account number when account is created
 // show error using UI instead of terminal

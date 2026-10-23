@@ -50,11 +50,6 @@ footer {
     transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-.login--hidden {
-    opacity: 0;
-    visibility: hidden;
-}
-
 .login__box {
     font-size: 30px;
     display: flex;
@@ -66,7 +61,7 @@ footer {
     gap: 2rem;
 }
 
-.create__account {
+.create-account {
     position: absolute;
     inset: 0;
     z-index: 10;
@@ -79,12 +74,7 @@ footer {
     transition: opacity 0.6s ease, visibility 0.6s ease;
 }
 
-.create__account--visible {
-    opacity: 1;
-    visibility: visible;
-}
-
-.create__account__box {
+.create-account__box {
     font-size: 30px;
     display: flex;
     flex-direction: column;
@@ -105,12 +95,18 @@ footer {
     transition: opacity 0.8s ease 0.6s, visibility 0.8s ease 0.6s;
 }
 
-.app--visible {
+.overlay--visible {
     opacity: 1;
     visibility: visible;
 }
 
-.mainInfo {
+.overlay--hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+
+.main-info {
     flex-shrink: 0;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -124,7 +120,7 @@ footer {
     font-size: 3rem;
 }
 
-.accountInfo {
+.account-info {
     font-size: 2rem;
 }
 
