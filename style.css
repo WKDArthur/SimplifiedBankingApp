@@ -37,6 +37,21 @@ footer {
     padding-top: 2rem;
 }
 
+.login {
+    position: fixed;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    opacity: 1;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+    border: black solid 1px;
+}
+
+.app {
+    opacity: 1;
+}
 
 .mainInfo {
     flex-shrink: 0;

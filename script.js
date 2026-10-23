@@ -30,15 +30,15 @@ const accounts = [account1, account2, account3, account4];
 
 // APP
 
-const labelBalanceValue = document.querySelector(".balance_value");
-const labelAccountName = document.querySelector(".accountInfo_name");
-const labelAccountNumber = document.querySelector(".accountInfo_number")
-const containerExtract = document.querySelector(".extract");
-const labelIncomeValue = document.querySelector(".income_value");
-const labelExpenditureValue = document.querySelector(".expenditure_value");
-const labelTransferValue = document.querySelector(".transfer_value");
-const labelTransferAccount = document.querySelector(".transfer_account");
-const btnTransfer = document.querySelector(".transfer_btn")
+const labelBalanceValue = document.querySelector(".balance__value");
+const labelAccountName = document.querySelector(".accountInfo__name");
+const labelAccountNumber = document.querySelector(".accountInfo__number")
+const containerMovements = document.querySelector(".movements");
+const labelIncomeValue = document.querySelector(".income__value");
+const labelExpenditureValue = document.querySelector(".expenditure__value");
+const inputTransferValue = document.querySelector(".transfer__value");
+const inputTransferAccount = document.querySelector(".transfer__account");
+const btnTransfer = document.querySelector(".transfer__btn")
 
 
 function calculateBalance(movements) {
@@ -58,8 +58,8 @@ function calculateIncome(movements) {
     return income;
 }
 
-function displayValues(account) {
-    containerExtract.innerHTML = '';
+function updateUI(account) {
+    containerMovements.innerHTML = '';
 
     labelAccountName.textContent = account.owner;
     labelAccountNumber.textContent = account.accountNumber;
@@ -71,13 +71,13 @@ function displayValues(account) {
         const html = `<div class="movement"> movements
           <div class="movement_value"> ${mov}</div>
         </div>`;
-        containerExtract.insertAdjacentHTML("afterbegin", html)
+        containerMovements.insertAdjacentHTML("afterbegin", html)
     });
 }
 
 function transferMoney() {
     // must change account is transfered from to current accout, now its fixed to account 1
-    const targetAccountNumber = Number(labelTransferAccount.value);
+    const targetAccountNumber = Number(inputTransferAccount.value);
     console.log(typeof (targetAccountNumber));
 
     if (targetAccountNumber == account1.accountNumber) {
@@ -88,7 +88,7 @@ function transferMoney() {
         console.log(matchingAccount);
 
         if (matchingAccount) {
-            const value = Number(labelTransferValue.value);
+            const value = Number(inputTransferValue.value);
             account1.movements.push(-value);
             matchingAccount.movements.push(value);
             console.log(matchingAccount.movements);
@@ -96,9 +96,9 @@ function transferMoney() {
         else console.log("error2");
     }
 
-    displayValues(account1);
+    updateUI(account1);
 }
 
 
 btnTransfer.addEventListener('click', transferMoney);
-displayValues(account1);
+updateUI(account1);

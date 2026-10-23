@@ -9,53 +9,47 @@
 </head>
 
 <body>
-
   <header>
     <h1> Banking App </h1>
   </header>
 
-  <main>
+  <div class="login">
+    <h2 class="login__title"> Enter Account </h2>
+    <label class="login__label"> account </label>
+    <input type="number" class="login__account">
+    <button class="login__btn"> confirm </button>
+  </div>
 
-    <div class="loginMenu">
-      <label class="login_label"> account </label>
-      <input type="number" class="login_account">
-      <button class="login_btn"> confirm </button>
-    </div>
-
-
+  <main class="app">
     <div class="mainInfo">
       <div class="balance">
-        <p class="balance_label"> Balance </p>
-        <p class="balance_value"> 0000000 </p>
+        <p class="balance__label"> Balance </p>
+        <p class="balance__value"> 0000000 </p>
       </div>
       <div class="accountInfo">
-        <p class="accountInfo_name"> account name </p>
-        <p class="accountInfo_number"> account number </p>
+        <p class="accountInfo__name"> account name </p>
+        <p class="accountInfo__number"> account number </p>
       </div>
       <div class="income">
-        <p class="income_label"> Income </p>
-        <p class="income_value"> 0000 </p>
+        <p class="income__label"> Income </p>
+        <p class="income__value"> 0000 </p>
       </div>
       <div class="expenditure">
-        <p class="expenditure_label"> Expenditure </p>
-        <p class="expenditure_value"> 0000 </p>
+        <p class="expenditure__label"> Expenditure </p>
+        <p class="expenditure__value"> 0000 </p>
       </div>
     </div>
-
-
-
     <div class="board">
-      <div class="extract">
+      <div class="movements">
       </div>
       <div class="transfer"> Transfer money
-        <label class="transfer_label"> account </label>
-        <input type="number" class="transfer_account">
+        <label class="transfer__label"> account </label>
+        <input type="number" class="transfer__account">
         <label class="transfer_label"> value </label>
-        <input type="number" class="transfer_value">
-        <button class="transfer_btn"> confirm </button>
+        <input type="number" class="transfer__value">
+        <button class="transfer__btn"> confirm </button>
       </div>
     </div>
-
   </main>
 
   <footer>
