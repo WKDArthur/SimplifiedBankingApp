@@ -39,14 +39,19 @@ const labelExpenditureValue = document.querySelector(".expenditure__value");
 const containerMovements = document.querySelector(".movements");
 const containerApp = document.querySelector(".app");
 const containerLogin = document.querySelector(".login");
+const containerCreateAccount = document.querySelector(".create__account")
 
 const inputTransferValue = document.querySelector(".transfer__value");
 const inputTransferAccount = document.querySelector(".transfer__account");
 const inputLoginAccount = document.querySelector(".login__account");
+const inputCreateAccountName = document.querySelector(".create__account__name");
 
 const btnTransfer = document.querySelector(".transfer__btn");
 const btnLogin = document.querySelector(".login__btn");
-const btnLogout = document.querySelector(".logout")
+const btnLogout = document.querySelector(".logout__btn");
+const btnConfirmCreateAccount = document.querySelector(".create__account__confirm__btn");
+const btnCreateAccountUI = document.querySelector(".login__create_account__btn");
+const btnBackFromCreateAccount = document.querySelector(".create__account__back__btn");
 
 
 let loggedAccount;
@@ -130,6 +135,31 @@ function logout() {
     loggedAccount = 0;
 }
 
+function goTocreateAccountUI() {
+    containerLogin.classList.add('login--hidden');
+    containerCreateAccount.classList.add('app--visible');
+}
+
+function returnFromCreateAccountUI() {
+    containerLogin.classList.remove('login--hidden');
+    containerCreateAccount.classList.remove('app--visible');
+}
+
+function createAccount() {
+    const newAccount = {
+        owner: inputCreateAccountName.value,
+        accountNumber: accounts.length + 1,
+        movements: [],
+    }
+
+    console.log(newAccount);
+
+    accounts.push(newAccount);
+}
+
 btnLogin.addEventListener('click', login)
 btnLogout.addEventListener('click', logout)
+btnCreateAccountUI.addEventListener('click', goTocreateAccountUI);
 btnTransfer.addEventListener('click', transferMoney);
+btnBackFromCreateAccount.addEventListener('click', returnFromCreateAccountUI);
+btnConfirmCreateAccount.addEventListener('click', createAccount);

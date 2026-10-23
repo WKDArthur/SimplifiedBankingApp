@@ -38,7 +38,6 @@ footer {
     flex-direction: column;
 }
 
-/* LOGIN: starts visible, covers only the stage */
 .login {
     position: absolute;
     inset: 0;
@@ -57,6 +56,35 @@ footer {
 }
 
 .login__box {
+    font-size: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: black solid 1px;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.create__account {
+    position: absolute;
+    inset: 0;
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f3f3f3;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.create__account--visible {
+    opacity: 1;
+    visibility: visible;
+}
+
+.create__account__box {
     font-size: 30px;
     display: flex;
     flex-direction: column;
