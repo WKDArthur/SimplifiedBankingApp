@@ -62,13 +62,13 @@ footer {
     flex: 1;
     flex-direction: row;
     justify-content: space-between;
+    min-height: 0;
 }
 
 .extract {
     display: flex;
     flex: 1;
     flex-direction: column;
-    height: 40rem;
     overflow-y: auto;
     padding: 3rem;
 

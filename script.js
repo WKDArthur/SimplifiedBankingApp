@@ -49,7 +49,7 @@ function calculateBalance(movements) {
 function calculateExpenditure(movements) {
     const expenditure = movements.filter(mov => mov < 0)
         .reduce((acc, mov) => acc + mov, 0)
-    return expenditure;
+    return Math.abs(expenditure);
 }
 
 function calculateIncome(movements) {
@@ -88,7 +88,7 @@ function transferMoney() {
         console.log(matchingAccount);
 
         if (matchingAccount) {
-            const value = labelTransferValue.value;
+            const value = Number(labelTransferValue.value);
             account1.movements.push(-value);
             matchingAccount.movements.push(value);
             console.log(matchingAccount.movements);
