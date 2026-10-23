@@ -10,7 +10,8 @@ html {
 }
 
 body {
-    font-family: "Poppins", sans-serif;
+    display: flex;
+    flex-direction: column;
     color: #444;
     background-color: #f3f3f3;
     height: 100vh;
@@ -22,12 +23,28 @@ header {
     font-size: large;
 }
 
-.mainInfo {
+main {
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    flex: 1;
+    min-height: 0;
+}
+
+
+footer {
+    flex-shrink: 0;
+    text-align: center;
+    padding-top: 2rem;
+}
+
+
+.mainInfo {
+    flex-shrink: 0;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
     align-items: center;
     padding: 0 2rem;
-    height: 10rem;
     font-size: large;
 }
 
@@ -42,14 +59,17 @@ header {
 
 .board {
     display: flex;
+    flex: 1;
     flex-direction: row;
+    justify-content: space-between;
 }
 
 .extract {
-    flex: 1;
     display: flex;
+    flex: 1;
     flex-direction: column;
-    overflow: scroll;
+    height: 40rem;
+    overflow-y: auto;
     padding: 3rem;
 
 }
@@ -60,7 +80,6 @@ header {
 }
 
 .transfer {
-    flex: 0;
     display: flex;
     flex-direction: column;
     padding: 2rem;
