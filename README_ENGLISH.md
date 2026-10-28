@@ -11,7 +11,7 @@ This is simple bank account app.
 - Balance, income and expenditures
 - Movements
 
-## Languages
+## Programming Languages
 - JavaScript
 - CSS
 - HTML
