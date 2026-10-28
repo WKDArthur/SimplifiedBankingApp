@@ -11,6 +11,11 @@ This is simple bank account app.
 - Balance, income and expenditures
 - Movements
 
+## Languages
+- JavaScript
+- CSS
+- HTML
+
 ## How to use:
 Create an account by clicking create account, login with account number, this will lead to dashboard of overview of the account
 and allow operations.
